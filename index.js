@@ -8,18 +8,40 @@ option.forEach(item =>{
     item.addEventListener('click',function(){
         turn.classList.add("hidden")
         boxes.classList.remove('hidden')
+        removeClick()
         takeTurn(item.id)
+        
     })
 })
 
 function takeTurn(selection){
   box.forEach(selected => {
       selected.addEventListener('click' , function(){
-          if(selection === "x"){
+          console.log(selected)
+          if(selection === "X"){
               selected.innerHTML = "<span>X</span>"
+              nextTurn("O")
+              
           }else{
               selected.innerHTML = "<span>O</span>"
+              nextTurn("X")
+             
           }
       })
   })
+}
+
+function nextTurn(value){
+    if(value === "X"){
+        takeTurn("X")
+    }else{
+        takeTurn("O")
+    }
+}
+
+function removeClick(){
+    option.forEach(opt => 
+        opt.removeEventListener('click',function(){
+            console.log("hi")
+        }))
 }
