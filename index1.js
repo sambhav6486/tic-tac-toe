@@ -60,10 +60,15 @@ function checkResult(winCondition ,receivedInput){
         let x = receivedInput[winner[0]]
         let y = receivedInput[winner[1]]
         let z = receivedInput[winner[2]]
-        console.log([x,y,z])
-        if(x === y && y === z){
-            console.log("winner")
+        if(count < 9){
+            if(x === y && y === z && x !== ""){
+                console.log("winner")
+            }
+        }else{
+            if(x !== y || y !== z)
+            console.log('draw')
         }
+        
     }
 }
 
