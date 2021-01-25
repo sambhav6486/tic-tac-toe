@@ -4,6 +4,7 @@ var boxes = $(".boxes")
 var box = $('.box')
 var selectSides = $('.select-sides')
 var count = 0;
+var inputValue = ""
 var playerInput =["" , "" , "" , "" , "" , "", "", "",""]
 
 const b0 = $('#0')
@@ -40,6 +41,7 @@ function playTurn(xOrO){
     box.click(function(){
         $(this).html(`<span>${xOrO}</span>`)
         playerInput[this.id] = xOrO
+        inputValue = xOrO
         removeClick(this)
         if(xOrO === "X"){
             xOrO = "O"
@@ -62,7 +64,8 @@ function checkResult(winCondition ,receivedInput){
         let z = receivedInput[winner[2]]
         if(count < 9){
             if(x === y && y === z && x !== ""){
-                console.log("winner")
+                console.log(`Winner is ${inputValue}`)
+                removeClick(box)
             }
         }else{
             if(x !== y || y !== z)
