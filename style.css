@@ -55,6 +55,12 @@
  .option{
    cursor: pointer;
  }
+ .result{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
 
   /* separte boxes */
   .b1{
@@ -93,6 +99,6 @@
   }
 
   .hidden{
-    visibility: hidden;
+    display: none;
   }
 
