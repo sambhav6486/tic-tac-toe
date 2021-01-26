@@ -64,9 +64,13 @@ function checkResult(winCondition, receivedInput) {
     let y = receivedInput[winner[1]];
     let z = receivedInput[winner[2]];
     if (count < 9) {
-      if (x === y && y === z && x !== "") {
+      if (x === y && y === z && x !== "" && y !== "" && z !== "")  {
         removeClick(box);
-        setTimeout(function(){showResult("winner")},200);
+        var b1 = $('#' + winner[0])
+        var b3 = $('#' + winner[1])
+        var b2 = $('#' + winner[2])
+        highlight(b1,b2,b3)
+        setTimeout(function(){showResult("winner")},500);
         
       }
     }
@@ -88,6 +92,12 @@ function showResult(result) {
   }else{
     $(resultText).html("Draw")
   }
+}
+
+function highlight(box1,box2,box3){
+  box1.addClass('highlighted')
+  box2.addClass('highlighted')
+  box3.addClass('highlighted')
 }
 
 function removeClick(value) {
