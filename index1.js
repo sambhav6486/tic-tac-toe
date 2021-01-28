@@ -7,6 +7,7 @@ var resultText = $(".result-text");
 var resultBox = $('.result')
 var replay = $(".refresh");
 var count = 0;
+var a = false
 var inputValue = "";
 var playerInput = ["", "", "", "", "", "", "", "", ""];
 
@@ -63,17 +64,22 @@ function checkResult(winCondition, receivedInput) {
     let x = receivedInput[winner[0]];
     let y = receivedInput[winner[1]];
     let z = receivedInput[winner[2]];
-    if (count < 9) {
-      if (x === y && y === z && x !== "") {
+    if (count <= 9) {
+      if (x === y && y === z && x !== "" && y !== "" && z !== "")  {
         removeClick(box);
-        setTimeout(function(){showResult("winner")},200);
-        
+        var b1 = $('#' + winner[0])
+        var b3 = $('#' + winner[1])
+        var b2 = $('#' + winner[2])
+        highlight(b1,b2,b3)
+        a = true
+        console.log(a)
+        setTimeout(function(){showResult(a)},500);
+        break;
+      }
+      if(count === 9){
+        setTimeout(function(){showResult(a)},500);
       }
     }
-  }
-  if (count === 9) {
-    removeClick(box);
-    setTimeout(function(){showResult("draw")},500);
   }
 }
 
@@ -83,11 +89,17 @@ function showResult(result) {
   replay.click(function(){
     location.reload()
   })
-  if (result === "winner") {
+  if (result) {
     $(resultText).html(`Winner is ${inputValue}`);
   }else{
     $(resultText).html("Draw")
   }
+}
+
+function highlight(box1,box2,box3){
+  box1.addClass('highlighted')
+  box2.addClass('highlighted')
+  box3.addClass('highlighted')
 }
 
 function removeClick(value) {

@@ -102,3 +102,7 @@
     display: none;
   }
 
+  .highlighted{
+    background-color: rgba(208, 214, 148, 0.8);
+  }
+
